@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <style>
+    .wrap {
+      background-color: brown;
+    }
+    .bg-green {
+      border: 2px solid darkblue;
+      margin: 10px;
+    }
+  </style>
+
+  <body>
+    <div id="root">Hello JAVASCRIPT</div>
+
+    <script type="text/babel">
+      // var number = 0;
+
+      // const increment = () => {
+      //   console.log("JS called", number);
+      //   number = number + 1;
+      //   document.getElementById("my-h1").innerText = number;
+      // };
+
+      // const rootTag = document.createElement("div");
+
+      // const buttonTag = document.createElement("button");
+      // buttonTag.innerText = "Increment";
+      // buttonTag.onclick = increment;
+
+      // const numberTag = document.createElement("h1");
+      // numberTag.id = "my-h1";
+      // console.log("code nadakkuthu");
+      // numberTag.innerText = number;
+
+      // rootTag.appendChild(numberTag);
+      // rootTag.appendChild(buttonTag);
+
+      // document.getElementById("root").appendChild(rootTag);
+
+      // var number = 0;
+
+      // const increment = () => {
+      //   console.log("var called", number);
+      //   number = number + 1;
+      //   reRender();
+      // };
+
+      // var a = 10;
+      // a = 12;
+
+      // const array = React.useState(10);
+
+      // const [a, b] = React.useState(10);
+
+      // array[0];
+      // array[1];
+
+      const Count = ({ value }) => {
+        return <p>{value}</p>;
+      };
+
+      const CounterApp = () => {
+        const [number, setNumber] = React.useState(0);
+
+        const increment = () => {
+          setNumber(number + 1);
+        };
+
+        const decrement = () => {
+          setNumber(number - 1);
+        };
+
+        return (
+          <div>
+            <Count value={number} />
+            <button onClick={increment}>Increment</button>
+            <button onClick={decrement}>Decrement</button>
+          </div>
+        );
+      };
+
+      const App = () => {
+        const [view, setView] = React.useState("app");
+
+        return (
+          <div>
+            <h1>{view === "home" ? "This is Home" : "Couter App"}</h1>
+            <button
+              onClick={() =>
+                view === "home" ? setView("app") : setView("home")
+              }
+            >
+              {view === "home" ? "Go to App" : "Go to Home"}
+            </button>
+            {view === "home" ? null : <CounterApp />}
+          </div>
+        );
+      };
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+
+      // const reRender = () => {
+      // ReactDOM.render(<App />, document.getElementById("root"));
+      // };
+
+      // reRender();
+    </script>
+  </body>
+</html>

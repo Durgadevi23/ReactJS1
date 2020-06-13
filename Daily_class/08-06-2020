@@ -1,0 +1,118 @@
+//Basic format of react and table creation
+
+https://codesandbox.io/s/react-basics-ce2y8?file=/index.html
+
+https://stackoverflow.com/questions/11528028/creating-a-grid-layout-with-css
+
+https://reactjs.org/docs/cdn-links.html
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Session</title>
+    <meta charset="UTF-8" />
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.development.js"
+    ></script>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"
+    ></script>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <script>
+      const rootElement = document.getElementById("app");
+      // const element = document.createElement("h1");
+      // element.textContent = "Hello World";
+      // rootElement.appendChild(element);
+
+      const tdTag = ({ children }) => React.createElement("td", {}, children);
+
+      const thTag = ({ children }) => React.createElement("th", {}, children);
+
+      const trTag = ({ children }) => React.createElement("tr", {}, children);
+
+      const tBodyTag = ({ children }) =>
+        React.createElement("tbody", {}, children);
+
+      const tHeadTag = ({ children }) =>
+        React.createElement("thead", {}, children);
+
+      const tableTag = ({ children }) =>
+        React.createElement(
+          "table",
+          { className: "table table-hover" },
+          children
+        );
+
+      const myRow = ({ fn, ln, email }) =>
+        trTag({
+          children: [
+            tdTag({ children: fn }),
+            tdTag({ children: ln }),
+            tdTag({ children: email })
+          ]
+        });
+
+      ReactDOM.render(
+        tableTag({
+          children: [
+            tHeadTag({
+              children: trTag({
+                children: [
+                  thTag({ children: "Firstname" }),
+                  thTag({ children: "Lastname" }),
+                  thTag({ children: "Email" })
+                ]
+              })
+            }),
+            tBodyTag({
+              children: [
+                trTag({
+                  children: [
+                    tdTag({ children: "hello" }),
+                    tdTag({ children: "world" }),
+                    tdTag({ children: "email" })
+                  ]
+                }),
+                myRow({ fn: "Yep", ln: "Nope", email: "yo-yo" }),
+                myRow({ fn: "Yep", ln: "Nope", email: "yo-yo" }),
+                myRow({ fn: "Yep", ln: "Nope", email: "yo-yo" }),
+                myRow({ fn: "Yep", ln: "Nope", email: "yo-yo" })
+              ]
+            })
+          ]
+        }),
+        document.getElementById("app")
+      );
+
+      // const element = ({ text, className, id }) =>
+      //   React.createElement("h1", { className, id }, text);
+
+      // const divElement = React.createElement(
+      //   "div",
+      //   { className: "root" },
+      //   element({ text: "hello", className: "yep-hello", id: "nope-hello" }),
+      //   element({ text: "hey", className: "yep-hey", id: "nope-hey" }),
+      //   element({ text: "hiii", className: "yep-hiii", id: "nope-hiii" }),
+      //   element({ text: "hoooo", className: "yep-hoooo", id: "nope-hoooo" })
+      // );
+
+      // ReactDOM.render(divElement, document.getElementById("app"));
+
+      console.log(React);
+      console.log(ReactDOM);
+    </script>
+  </body>
+</html>
